@@ -31,36 +31,30 @@ The top line ("Concept preview prepared for…") is plain HTML in `index.html`
 (`<div class="concept-bar">`). Hide it with one class: add `hide-concept` to `<body>`,
 or delete the div when the site becomes real.
 
-## Swapping in real photos
+## Photos — stock stand-ins (replace before real use)
 
-All images are designed placeholders (dark plate, gold hairline, PHOTO label) —
-no usable photos were available (Instagram posts sit behind a login wall; Google Maps
-photos can't be fetched without their API; third-party aggregator photos have unknown
-provenance and were not used).
+All seven slots are filled with **free-licence Unsplash stand-ins** (see
+`assets/photos/SOURCES.md` for per-file source URLs, licence and what each shows). They are
+*not* Golden Ride's work — the shop's own photos could not be obtained (Instagram posts sit
+behind a login wall; Google Maps photos can't be fetched without their API; third-party
+aggregator photos have unknown provenance; no website exists).
 
-Expected files in `assets/photos/` (see `SOURCES.md`):
+Replacing them is drop-in: same filenames, no HTML/CSS edits —
 
-| File | Where it goes | Aspect |
-|---|---|---|
-| `hero.webp` (+ `hero.jpg`) | replace `.plate-hero` in the hero | 4:3 landscape, ≥1600px wide, ≤200 KB |
-| `g1…g6.webp` (+ `.jpg`) | replace the six `.ph` plates in the gallery | see table in SOURCES.md, ≤120 KB each |
+| File | Slot | Aspect | Max size |
+|---|---|---|---|
+| `hero.webp` | hero (`.plate-hero`) | 4:5 portrait | 200 KB |
+| `g1.webp` | gallery wide top | 16:10 | 120 KB |
+| `g2/g3.webp` | gallery tall | 3:4 | 120 KB |
+| `g4/g5.webp` | gallery square | 1:1 | 120 KB |
+| `g6.webp` | gallery strip | 21:6 | 120 KB |
 
-Pattern for each swap:
+When swapping: match the `width`/`height` attributes in `index.html` to the new files and
+update each bilingual `alt` (e.g. `alt="PPF applied on a dark sedan / تطبيق حماية الطلاء"`),
+then record the source in `SOURCES.md`.
 
-```html
-<!-- before -->
-<div class="plate ph g1" role="img" aria-label="…"><span class="ph-tag">Photo</span></div>
-<!-- after -->
-<img class="g1" src="assets/photos/g1.webp" width="1200" height="900"
-     loading="lazy" alt="…EN…" lang="en">
-```
-
-Keep the class (`g1`…`g6`, `plate-hero`) so the layout does not change; give each `img`
-`width`/`height`, `loading="lazy"` (except hero), and bilingual alt text (put `lang` on the
-alt or keep both languages in the attribute, e.g. `alt="PPF applied on a dark sedan / تطبيق حماية الطلاء"`).
-
-Gold hue was **not** retuned (no photos yet) — after real photos land, the `--gold` token in
-`styles.css` may be shifted up to 6° in hue to match the paint tones.
+Gold hue was kept as specified while judging it against the stand-ins; after real photos
+land, the `--gold` token in `styles.css` may be shifted up to 6° in hue to match the paint tones.
 
 ## Files
 
@@ -69,7 +63,8 @@ Gold hue was **not** retuned (no photos yet) — after real photos land, the `--
 - `main.js` — `CONFIG` placeholders, one copy dictionary (EN/AR), language toggle
   (`?lang=ar`, localStorage in try/catch), reveal-on-scroll, WhatsApp link builder.
   Arabic copy is listed in a comment block at the end of `main.js` for review.
-- `assets/fonts/` — 4 self-hosted woff2; `assets/photos/SOURCES.md` — expected photo filenames
+- `assets/fonts/` — 4 self-hosted woff2; `assets/photos/` — 7 WebP stand-ins + `SOURCES.md`
+  (licence, source URLs, replacement specs)
 - `assets/og-image.png` — 1200×630 share card, rendered from `og.html` (dev-only, not linked
   from the site; re-render after copy changes)
 

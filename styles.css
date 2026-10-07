@@ -444,26 +444,17 @@ html[lang='ar'] .trust-cta { text-transform: none; letter-spacing: normal; font-
   inset: 11px;
   border: 1px solid rgba(200, 169, 106, 0.14);
   pointer-events: none;
-}
-.plate::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    repeating-linear-gradient(135deg, transparent 0 26px, rgba(200, 169, 106, 0.035) 26px 27px);
-  pointer-events: none;
-}
-.ph-tag {
-  position: absolute;
-  bottom: 20px;
-  inset-inline-start: 22px;
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  color: rgba(200, 169, 106, 0.62);
   z-index: 1;
 }
+.plate img {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.plate-hero img { object-position: 50% 38%; }
 .plate-hero { aspect-ratio: 4 / 5; }
 
 /* ============ Services ============ */

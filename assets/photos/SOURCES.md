@@ -1,37 +1,53 @@
 # Photo sources — Golden Ride Car Care demo
 
-**No photographs were included.** All image slots in the site are designed placeholders
-(dark plate, gold hairline frame, PHOTO label) that can be swapped for real files without
-any layout change.
+**All seven photos are free-licence stock stand-ins**, downloaded and stored locally
+(`assets/photos/*.webp`) — they are *not* Golden Ride's own work and must be replaced with
+the shop's real photos before this site goes in front of customers. Alt text describes what
+each image actually shows.
 
-What was attempted, in the order of preference given:
+Licence: **Unsplash License** — free for commercial use, no attribution required
+(https://unsplash.com/license). Source URL for each file (downloaded 2026-10-07):
 
-1. **Photos pre-placed in `assets/photos/`** — the folder did not exist before this build;
-   no images were supplied.
-2. **The business's own public social media**
-   - Instagram `@goldenride.ae` — profile bio is public and was used for facts (handle,
-     phone, services), but photo posts require login. No login was attempted, no login wall
-     was bypassed. https://www.instagram.com/goldenride.ae/
-   - TikTok `@goldenride.ae1` — page returned no content; ownership NOT VERIFIED.
-   - No website exists (none found in any listing).
-3. **Google Maps photos uploaded by the owner** — the Maps place page is a JavaScript app;
-   photo files are not present in the served HTML and require Google's internal API. Not
-   fetched. https://maps.app.goo.gl/7pimMKEe4TP1zuHx9?g_st=ic
-4. **Third-party directories** (magicpin shows 21 photos, etc.) — provenance unknown
-   (may be customer uploads or Google imports); excluded per the no-customer-photo rule.
+| File | Shows | Source (images.unsplash.com) |
+|---|---|---|
+| `hero.webp` 1200×1500, 61 KB | man machine-polishing a dark car in a workshop | `photo-1708805282706-f44730b7e527` |
+| `g1.webp` 1120×700, 89 KB | pressure-washing a black sports car | `photo-1520340356584-f9917d1eea6f` |
+| `g2.webp` 960×1280, 35 KB | orbital polisher on a masked hood | `photo-1620584898989-d39f7f9ed1b7` |
+| `g3.webp` 960×1280, 47 KB | machine-polishing a taped black fender | `photo-1620584899131-a5ff5f8fbb03` |
+| `g4.webp` 1000×1000, 48 KB | brush-detailing a black alloy wheel | `photo-1633014041037-f5446fb4ce99` |
+| `g5.webp` 800×800, 86 KB | wash mitt + suds on a black panel | `photo-1694678505383-676d78ea3b96` |
+| `g6.webp` 1400×520, 94 KB | cars being washed in a service bay | `photo-1732357624591-f2137085659b` |
 
-## Expected files when real photos arrive
+Every file was tone-graded on download (gamma + highlight rolloff + slight warm bias) so the
+set sits together against the `#0B0A09` page background; source IDs above are the ungraded
+originals. Total payload: ~461 KB, all `loading="lazy"` except the hero.
 
-| File | Slot | Aspect ratio | Max size |
+Full URL pattern: `https://images.unsplash.com/<id>?w=1800&q=80&fm=jpg&fit=max`
+
+## Why the shop's own photos were not used (first build)
+
+1. **Instagram `@goldenride.ae`** — bio public (used for facts), photo posts behind a
+   login wall. No login attempted, no wall bypassed.
+2. **Google Maps** — place page is a JavaScript app; photo files require Google's internal
+   API. Not fetched.
+3. **Third-party directories** (magicpin shows 21 photos, etc.) — provenance unknown
+   (customer uploads or Google imports); excluded.
+4. **No website exists** — nothing to source from.
+5. No images were supplied in the project folder before the build.
+
+## Replacing with real photos
+
+| File | Slot | Aspect | Max size |
 |---|---|---|---|
-| `hero.webp` / `hero.jpg` | hero (`.plate-hero`) | 4:3 landscape (≥1600 px wide) | 200 KB |
-| `g1.webp` / `g1.jpg` | gallery wide top | 16:10 | 120 KB |
-| `g2.webp` / `g2.jpg` | gallery tall | 3:4 | 120 KB |
-| `g3.webp` / `g3.jpg` | gallery tall | 3:4 | 120 KB |
-| `g4.webp` / `g4.jpg` | gallery square | 1:1 | 120 KB |
-| `g5.webp` / `g5.jpg` | gallery square | 1:1 | 120 KB |
-| `g6.webp` / `g6.jpg` | gallery strip | 21:6 | 120 KB |
+| `hero.webp` | hero (`.plate-hero`) | 4:5 portrait (renders 4:5 mobile / 4:3.4 desktop, cover-cropped) | 200 KB |
+| `g1.webp` | gallery wide top | 16:10 | 120 KB |
+| `g2.webp` / `g3.webp` | gallery tall | 3:4 | 120 KB |
+| `g4.webp` / `g5.webp` | gallery square | 1:1 | 120 KB |
+| `g6.webp` | gallery strip | 21:6 | 120 KB |
 
-Rules when editing photos: skip images with identifiable faces, crop/blur license plates,
-no watermarks or heavy filters, keep both WebP and JPEG fallback, record the source URL of
-every image in this file.
+Same filenames = drop-in replacement, no HTML/CSS edits needed (width/height attributes in
+`index.html` should match the new files). Also update each `alt` (bilingual EN / AR) to
+describe the new photo.
+
+Rules for the real photos: skip images with identifiable faces, crop/blur licence plates,
+no watermarks or heavy filters, record the source (owner delivery / shoot date) in this file.
