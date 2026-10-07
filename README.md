@@ -21,8 +21,9 @@ Open http://localhost:8080 — add `?lang=ar` to preview Arabic.
 | `HOURS` | `{{HOURS}}` | Opening hours. Sources disagree: Google mirror says 09:00–22:00 daily, 2GIS says 08:00–22:00. Confirm on Google Maps. |
 | `GOOGLE_RATING` / `GOOGLE_REVIEWS` | `4.8` / `22` | From a 2026-09-14 listing mirror. A magicpin mirror shows 4.7 / 28. **Verify live in Google Maps** (Sort by Newest) before showing the owner. |
 
-Also replace in `index.html` (2 places): the `og:image` / `twitter:image` absolute URL
-(`https://YOUR-DOMAIN.example/og-image.png` → real URL once hosted). Local file: `assets/og-image.png`.
+Also in `index.html` (2 places): the `og:image` / `twitter:image` absolute URLs —
+currently set to the live demo (`https://anesch531.github.io/goldenride-dubai-demo/assets/og-image.png`);
+swap to the final domain once the site is hosted for real. Local file: `assets/og-image.png`.
 
 ## Removing the preview bar
 
